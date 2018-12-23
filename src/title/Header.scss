@@ -1,0 +1,24 @@
+@import '../shared/variables';
+
+.Header {
+  .title {
+    font-family: $roboto;
+    color: $blue-light-color;
+    font-weight: $thin;
+    font-size: 3.5rem;
+    margin: 40px 0 0;
+  }
+  .subtitle {
+    font-family: $muli;
+    color: $light-color;
+    font-weight: $light;
+    font-size: 1.1rem;
+    margin: 0;
+  }
+
+  @media screen and (max-width: $screen-mobile-max) {
+    .title {
+      font-size: 3rem;
+    }
+  }
+}

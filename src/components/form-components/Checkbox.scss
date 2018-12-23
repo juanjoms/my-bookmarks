@@ -1,0 +1,32 @@
+.mdc-checkbox {
+  position: relative;
+  display: flex;
+  cursor: pointer;
+  .mdc-checkbox__native-control {
+    opacity: 0;
+    position: absolute;
+    cursor: pointer;
+  }
+  .mdc-checkbox__background {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #999;
+    background: white;
+    border-radius: 2px;
+    pointer-events: none;
+    margin-right: 8px;
+    .mdc-checkbox__checkmark {
+      height: 20px;
+      width: 20px;
+      stroke-width: 3.12px;
+      fill: transparent;
+    }
+  }
+  .mdc-checkbox__native-control:checked ~ .mdc-checkbox__background {
+    background-color: rgba(90, 0, 238, 0.87);
+    border: 2px solid rgba(90, 0, 238, 0.87);
+  }
+}

@@ -1,0 +1,47 @@
+.input-group {
+  position: relative;
+  padding-top: 10px;
+  margin-bottom: 20px;
+  text-align: left;
+
+  .float-label {
+    font-size: 16px;
+    transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    position: absolute;
+    bottom: 11px;
+    left: 10px;
+    color: #bbb;
+    cursor: text;
+
+    &.float-above {
+      transform-origin: top left;
+      transform: translateY(-100%) scale(0.75);
+      color: rgba(90, 0, 238, 0.87);
+      cursor: auto;
+    }
+  }
+  .input-field {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    font-size: 16px;
+    height: 38px;
+    padding: 0 10px;
+    &:focus {
+      border-bottom-color: #999;
+      outline: none;
+    }
+  }
+  .line-ripple {
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 0;
+    bottom: 0;
+    background: rgba(90, 0, 238, 0.87);
+    transition: width .2s ease;
+    &.extended {
+      width: 100%
+    }
+  }
+}
