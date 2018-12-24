@@ -46,7 +46,6 @@ const BookmarkList = () => {
     setModalConfig({showModal: false, bookmark });
   }
   const handleRemove = ( bookmarkKey: number) => {
-    //event.stopPropagation();
     bookmarks[bookmarkKey].isEmpty = true;
     setBookmarks(bookmarks);
   }

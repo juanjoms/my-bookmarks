@@ -5,5 +5,5 @@ export default class BookmarkModel {
   url?: string;
   iconUrl?: string;
   isExternal?: boolean;
-  backColor: string = 'black';
+  backColor: string = '#000000';
 };

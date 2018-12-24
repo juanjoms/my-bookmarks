@@ -47,6 +47,9 @@
       padding: 20px;
       overflow: scroll;
       border-radius: 0;
+      .modal-title {
+        margin: 10px 0 20px;
+      }
       .row {
         flex-wrap: wrap;
         .col-6 {
