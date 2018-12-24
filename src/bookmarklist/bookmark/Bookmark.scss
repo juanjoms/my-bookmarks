@@ -1,0 +1,125 @@
+@import '../../shared/variables';
+
+.Bookmark {
+  width: 150px;
+  height: 150px;
+  position: relative;
+  background-color: black;
+  border-radius: 4px;
+  overflow: hidden;
+  outline: none;
+  &.empty {
+    background-image: linear-gradient(135deg, lighten($back-color, 3) 0%, $back-color 100%);
+    border: 1px solid darken($back-color, 5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    .add-icon {
+      width: 50px;
+      fill: darken($back-color, 10);
+      animation: spin $fast linear;
+    }
+    &:hover {
+      background-color: $back-color;
+      background-image: none;
+      border: 1px solid darken($back-color, 7);
+    }
+    &:focus,
+    &:active {
+      border: 2px solid lighten($back-color, 10);
+    }
+  }
+  &.filled {
+    background-position: 15% 85%;
+    background-size: 50px;
+    background-repeat: no-repeat;
+    a {
+      width: 100%;
+      height: 100%;
+      color: inherit;
+      text-decoration: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      .overlay {
+        background-color: rgba(black, 0.5);
+        color: white;
+        border: 1px solid rgba(white, 0.6);
+        font-size: 17px;
+        font-weight: $light;
+        font-family: $muli;
+        border-radius: 5px 0 0 5px;
+        width: 80%;
+        min-height: 52px;
+        position: absolute;
+        border-right: none;
+        top: 14%;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 8px;
+        line-height: 1.1em;
+      }
+      &:focus {
+        outline: none;
+        border: 2px solid rgba(white, 0.4);
+        border-radius: 4px;
+      }
+    }
+    .ctas {
+      display: none;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      .cta-button {
+        border: none;
+        background: none;
+        padding: 4px;
+        border-radius: 4px;
+        cursor: pointer;
+        &:focus {
+          outline: none;
+          box-shadow: 0px 0px 0px 1px $light-color inset;
+        }
+        .edit-icon {
+          height: 15px;
+          fill: rgba($light-color, 0.8);
+          color: rgba($light-color, 0.8);
+          transition: $fast ease;
+        }
+        &:hover {
+          .edit-icon {
+            fill: $light-color;
+            color: $light-color;
+          }
+        }
+      }
+    }
+    &:hover {
+      .ctas {
+        display: block;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $screen-tablet-max) {
+  .Bookmark.filled {
+    .ctas {
+      display: block;
+      .cta-button {
+        padding: 4px 6px;
+        .edit-icon {
+          height: 20px;
+        }
+      }
+    }
+  }
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(180deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(180deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(180deg); transform:rotate(180deg); } }
