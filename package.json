@@ -2,7 +2,7 @@
   "name": "home",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://juanjo23.github.io/home",
+  "homepage": "https://juanjo23.github.io/my-bookmarks",
   "dependencies": {
     "@types/jest": "23.3.10",
     "@types/node": "10.12.18",
