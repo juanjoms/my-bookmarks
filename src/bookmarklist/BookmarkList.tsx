@@ -8,24 +8,18 @@ import selfLinkDark from './bookmark-images/self-link_dark.svg';
 import externalLink from './bookmark-images/external-link_light.svg';
 import externalLinkDark from './bookmark-images/external-link_dark.svg';
 
-
-let initialBookmarks: BookmarkModel[] = [];
-const serializedBookmars = localStorage.getItem('bookmarks');
-if (serializedBookmars) {
-  initialBookmarks = JSON.parse(serializedBookmars);
-} else {
-  for (let i = 0; i < 8; i += 1) {
-    initialBookmarks.push({ value: '', key: i, isEmpty: true, backColor: 'black'});
-  }
-}
 type ModalConfig = {
   showModal: boolean,
   bookmark: BookmarkModel
 }
 
 const BookmarkList = () => {
-  const [modalConfig, setModalConfig] = useState({showModal: false, bookmark: new BookmarkModel()} as ModalConfig);
-  const [bookmarks, setBookmarks] = useState(initialBookmarks);
+  const [modalConfig, setModalConfig] = useState({showModal: false, bookmark: new BookmarkModel(0)} as ModalConfig);
+  const [bookmarks, setBookmarks] = useState<BookmarkModel[]>(() => {
+    const strBookmarks = localStorage.getItem('bookmarks');
+    return strBookmarks ? JSON.parse(strBookmarks) : Array.from(Array(8), (e, i) => new BookmarkModel(i));
+  });
+
   useEffect(() => {
     localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
   });
