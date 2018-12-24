@@ -4,15 +4,15 @@
   "private": true,
   "homepage": "https://juanjo23.github.io/home",
   "dependencies": {
-    "@types/jest": "23.3.9",
-    "@types/node": "10.12.2",
-    "@types/react": "16.7.7",
-    "@types/react-dom": "16.0.9",
-    "node-sass": "^4.10.0",
-    "react": "^16.7.0-alpha",
-    "react-dom": "^16.7.0-alpha",
-    "react-scripts": "2.1.1",
-    "typescript": "3.1.6"
+    "@types/jest": "23.3.10",
+    "@types/node": "10.12.18",
+    "@types/react": "16.7.18",
+    "@types/react-dom": "16.0.11",
+    "node-sass": "^4.11.0",
+    "react": "16.7.0-alpha.2",
+    "react-dom": "16.7.0-alpha.2",
+    "react-scripts": "2.1.2",
+    "typescript": "3.2.2"
   },
   "scripts": {
     "start": "react-scripts start",
