@@ -2,18 +2,20 @@
 
 .Modal {
   .modal-dialog {
-    width: 550px;
+    text-align: center;
+    width: 560px;
     height: 340px;
-    background: white;
+    background: $dark-color;
+    color: $light-grey-color;
     position: fixed;
-    top: calc(50% - 170px);
-    left: calc(50% - 250px);
+    top: calc(50% - 180px);
+    left: calc(50% - 280px);
     z-index: 2;
-    border-radius: 4px;
-    padding: 20px 0;
+    border-radius: 5px;
+    padding: 10px 5px;
     .modal-title {
-      font-weight: $light;
-      margin: 0px 0 15px;
+      font-weight: $regular;
+      margin: 15px 0 25px;
     }
     .row {
       display: flex;
@@ -32,8 +34,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: black;
-    opacity: 0.3;
+    background: $dark-color;
+    opacity: 0.4;
     z-index: 1;
   }
 
@@ -47,9 +49,6 @@
       padding: 20px;
       overflow: scroll;
       border-radius: 0;
-      .modal-title {
-        margin: 10px 0 20px;
-      }
       .row {
         flex-wrap: wrap;
         .col-6 {

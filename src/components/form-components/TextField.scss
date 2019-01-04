@@ -1,3 +1,4 @@
+@import '../../shared/variables';
 .input-group {
   position: relative;
   padding-top: 10px;
@@ -10,25 +11,26 @@
     position: absolute;
     bottom: 11px;
     left: 10px;
-    color: #bbb;
+    color: $light-grey-color;
     cursor: text;
 
     &.float-above {
       transform-origin: top left;
       transform: translateY(-100%) scale(0.75);
-      color: rgba(90, 0, 238, 0.87);
+      color: $theme-color;
       cursor: auto;
     }
   }
   .input-field {
     width: 100%;
     border: none;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid $light-grey-color;
     font-size: 16px;
     height: 38px;
     padding: 0 10px;
+    background: transparent;
+    color: $light-color;
     &:focus {
-      border-bottom-color: #999;
       outline: none;
     }
   }
@@ -38,7 +40,7 @@
     height: 2px;
     left: 0;
     bottom: 0;
-    background: rgba(90, 0, 238, 0.87);
+    background: $theme-color;
     transition: width .2s ease;
     &.extended {
       width: 100%

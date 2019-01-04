@@ -8,5 +8,5 @@ export default class BookmarkModel {
   url?: string;
   iconUrl?: string;
   isExternal?: boolean;
-  backColor: string = '#000000';
+  backColor: string = '#00BCD4';
 };
