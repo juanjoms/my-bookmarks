@@ -5,8 +5,8 @@ export default class BookmarkModel {
   key: number = 0;
   isEmpty: boolean = true;
   value: string = '';
-  url?: string;
+  url?: string = 'https://';
   iconUrl?: string;
-  isExternal?: boolean;
+  isExternal?: boolean = true;
   backColor: string = '#00BCD4';
 };
