@@ -6,7 +6,6 @@ export default class BookmarkModel {
   isEmpty: boolean = true;
   value: string = '';
   url?: string = 'https://';
-  iconUrl?: string;
   isExternal?: boolean = true;
   backColor: string = '#00BCD4';
 };

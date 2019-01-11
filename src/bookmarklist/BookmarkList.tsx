@@ -3,10 +3,6 @@ import './BookmarkList.scss';
 import { Modal } from '../modal/Modal';
 import { Bookmark } from './bookmark/Bookmark';
 import BookmarkModel from '../bookmark';
-import selfLink from './bookmark-images/self-link_light.svg';
-import selfLinkDark from './bookmark-images/self-link_dark.svg';
-import externalLink from './bookmark-images/external-link_light.svg';
-import externalLinkDark from './bookmark-images/external-link_dark.svg';
 
 type ModalConfig = {
   showModal: boolean,
@@ -29,10 +25,6 @@ const BookmarkList = () => {
   }
   const closeModal = (bookmark: BookmarkModel) => {
     setModalConfig({showModal: false, bookmark});
-    const backIsDark = isDark(bookmark.backColor);
-    bookmark.iconUrl = bookmark.isExternal ?
-      (backIsDark ? externalLink : externalLinkDark) :
-      (backIsDark ? selfLink : selfLinkDark);
     bookmarks[bookmark.key] = bookmark;
     setBookmarks(bookmarks);
   }
@@ -70,11 +62,3 @@ const BookmarkList = () => {
 };
 
 export default BookmarkList;
-
-function isDark(bgColor: string): boolean {
-  var color = (bgColor.charAt(0) === '#') ? bgColor.substring(1, 7) : bgColor;
-  var r = parseInt(color.substring(0, 2), 16); // hexToR
-  var g = parseInt(color.substring(2, 4), 16); // hexToG
-  var b = parseInt(color.substring(4, 6), 16); // hexToB
-  return (((r * 0.299) + (g * 0.587) + (b * 0.114)) < 186);
-}

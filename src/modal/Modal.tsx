@@ -42,7 +42,7 @@ export const Modal = ({onSave, bookmark, dismissModal }: IPropsType ) => {
 
   return (
     <div className="Modal">
-      <div className="modal-dialog zoomInUp animated">
+      <div className="modal-dialog zoomInUp">
         <h2 className="modal-title">Bookmark options:</h2>
         <div className="row">
           <div className="col-left">
