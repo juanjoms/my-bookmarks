@@ -1,13 +1,16 @@
 /* Colors */
 //$back-color: #282c34;
+$back-color: #292e34;
 $back-color: #2B3137;
+$dark-color: #15181a;
+$dark-color: darken($back-color, 6);
 $back-color-alt: #24292E;
-$link-color: #61dafb;
-$blue-light-color: #81D4FA;
-$title-color: #4DD0E1;
-$light-color: #E8E8E8;
-$grey-color: #A5A7A3;
-$color-theme: #6200ee;
+$title-color: #61dafb;
+$light-color: #f5f5f5;
+$light-grey-color: #e0e0e0;
+$grey-color: #999999;
+$theme-color: #ff8a00;
+$theme-color: #F47034;
 
 /* Fonts */
 $roboto: 'Roboto', sans-serif;
@@ -15,6 +18,7 @@ $muli: 'Muli', $roboto;
 $thin: 100;
 $light: 300;
 $regular: 400;
+$medium: 500;
 
 
 /* Resolution Break Points */
@@ -22,5 +26,6 @@ $screen-mobile-max: 767px;
 $screen-tablet-max: 991px;
 
 /* Animation times */
-$fast: 340ms;
-$normal: 500ms;
+$fast: 200ms;
+$normal: 340ms;
+$slow: 500ms;
