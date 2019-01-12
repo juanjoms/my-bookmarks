@@ -3,8 +3,10 @@ import './TextField.scss';
 
 export const TextField = ({value, onChange, label, id}: TextFieldProps ) => {
   const handleFocus = (e: React.FocusEvent) => {
-    const line = e.target.nextElementSibling as Element;
-    const label = e.target.previousElementSibling as HTMLLabelElement;
+    const input: HTMLInputElement = e.target as HTMLInputElement;
+    input.select();
+    const line = input.nextElementSibling as Element;
+    const label = input.previousElementSibling as HTMLLabelElement;
     label.classList.add('float-above');
     line.classList.add('extended');
   };

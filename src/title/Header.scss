@@ -1,9 +1,10 @@
 @import '../shared/variables';
 
 .Header {
+  text-align: center;
   .title {
     font-family: $roboto;
-    color: $blue-light-color;
+    color: $title-color;
     font-weight: $thin;
     font-size: 3.5rem;
     margin: 40px 0 0;

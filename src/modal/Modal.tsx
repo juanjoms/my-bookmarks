@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TextField } from '../components/form-components/TextField';
 import { Checkbox } from '../components/form-components/Checkbox';
 import { Button } from '../components/form-components/Button';
@@ -28,9 +28,21 @@ export const Modal = ({onSave, bookmark, dismissModal }: IPropsType ) => {
     onSave(bookmark);
   };
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if(e.key === 'Escape') {
+        dismissModal();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    }
+  });
+
   return (
     <div className="Modal">
-      <div className="modal-dialog zoomInUp animated">
+      <div className="modal-dialog zoomInUp">
         <h2 className="modal-title">Bookmark options:</h2>
         <div className="row">
           <div className="col-left">
