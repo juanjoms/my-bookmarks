@@ -68,15 +68,16 @@
       }
       .watermark-icon {
         position: absolute;
-        height: 50px;
+        height: 48px;
+        width: 48px;
         left: 15px;
         bottom: 15px;
         opacity: 0.2;
         &.light-icon {
-          fill: white;
+          fill: $light-color;
         }
         &.dark-icon {
-          fill: black;
+          fill: $dark-color;
         }
       }
       &:focus {
