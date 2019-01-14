@@ -64,7 +64,7 @@
         align-items: center;
         padding: 0 8px;
         line-height: 1.1em;
-        transition: $normal ease;
+        transition: background-color $slow ease;
       }
       .watermark-icon {
         position: absolute;

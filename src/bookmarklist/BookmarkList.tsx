@@ -3,6 +3,7 @@ import './BookmarkList.scss';
 import { Modal } from '../modal/Modal';
 import { Bookmark } from './bookmark/Bookmark';
 import BookmarkModel from '../bookmark';
+import { dummyBookmarks } from './dummyBookmarks';
 
 type ModalConfig = {
   showModal: boolean,
@@ -11,7 +12,7 @@ type ModalConfig = {
 
 const initBookmarks = (): BookmarkModel[] => {
   const strBookmarks = localStorage.getItem('bookmarks');
-  const defaultBookmarks: BookmarkModel[] = strBookmarks ? JSON.parse(strBookmarks) : Array.from(Array(8), (e, i) => new BookmarkModel(i));
+  const defaultBookmarks: BookmarkModel[] = strBookmarks ? JSON.parse(strBookmarks) : dummyBookmarks;
   defaultBookmarks.forEach((bookmark, index) => {
     defaultBookmarks[index] = bookmark.isEmpty ? new BookmarkModel(index): bookmark;
   })

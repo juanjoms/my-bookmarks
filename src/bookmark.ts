@@ -7,5 +7,5 @@ export default class BookmarkModel {
   value: string = '';
   url?: string = 'https://';
   isExternal?: boolean = true;
-  backColor: string = '#00BCD4';
+  backColor: string = '#4CAF50';
 };
