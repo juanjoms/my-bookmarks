@@ -1,15 +1,28 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    }
-  ],
+  "short_name": "My Bookmarks",
+  "name": "My bookmarks",
+  "author": "Juanjo MS",
+  "description": "Add your favorite bookmarks with custom colors",
+  "icons": {
+    "16": "/images/icon-16.png",
+    "32": "/images/icon-16.png",
+    "48": "/images/icon-16.png",
+    "128": "/images/icon-16.png"
+  },
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#2B3137",
+  "background_color": "#2B3137",
+
+  "version": "1.0",
+  "manifest_version": 2,
+  "page_action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "/images/icon-16.png",
+      "32": "/images/icon-16.png",
+      "48": "/images/icon-16.png",
+      "128": "/images/icon-16.png"
+    }
+  }
 }
