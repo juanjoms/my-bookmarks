@@ -6,6 +6,11 @@
   justify-content: center;
   margin: 0 auto;
   margin-top: 90px;
+  &.blurred {
+    transition: filter $slow;
+    transition-delay: $slow;
+    filter: blur(3px);
+  }
 
   @media screen and (max-width: $screen-mobile-max) {
     grid-template-columns: repeat(2, auto);

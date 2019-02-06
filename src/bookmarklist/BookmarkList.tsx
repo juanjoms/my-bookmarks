@@ -28,7 +28,7 @@ const BookmarkList = () => {
   });
 
   const handleAddEdit = (bookmark: BookmarkModel) => {
-      setModalConfig({showModal: true, bookmark });
+    setModalConfig({showModal: true, bookmark });
   }
   const closeModal = (bookmark: BookmarkModel) => {
     setModalConfig({showModal: false, bookmark});
@@ -44,7 +44,7 @@ const BookmarkList = () => {
   }
   return (
     <>
-      <div className="BookmarkList">
+      <div className={`BookmarkList ${modalConfig.showModal ? 'blurred': ''}`}>
         {
           bookmarks.map((bookmark) =>
             <Bookmark
