@@ -1,16 +1,34 @@
 @import '../shared/variables';
 
+.sync {
+  background: none;
+  border: 1px solid darken($back-color, 5);
+  padding: 10px;
+  border-radius: 5px;
+  position: absolute;
+  right: 25px;
+  top: 50px;
+  cursor: pointer;
+  background-image: linear-gradient(135deg, lighten($back-color, 3) 0%, $back-color 100%);
+  border: 1px solid rgba(lighten($back-color, 30), 0.3);
+  .sync-icon {
+    height: 30px;
+    width: 30px;
+    fill: $grey-color;    
+    transition: 1s;    
+  }
+  &:hover {
+    .sync-icon {
+      fill: lighten($grey-color, 15);
+    }
+  }
+}
 .BookmarkList {
   display: grid;
   grid-template-columns: repeat(4, auto);
   justify-content: center;
   margin: 0 auto;
-  margin-top: 90px;
-  &.blurred {
-    transition: filter $slow;
-    transition-delay: $slow;
-    filter: blur(3px);
-  }
+  margin-top: 90px;  
 
   @media screen and (max-width: $screen-mobile-max) {
     grid-template-columns: repeat(2, auto);

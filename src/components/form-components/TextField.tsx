@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import './TextField.scss';
 
-export const TextField = ({value, onChange, label, id}: TextFieldProps ) => {
+export const TextField = ({value, onChange, label, id, onKeyEnter}: TextFieldProps ) => {  
   const handleFocus = (e: React.FocusEvent) => {
     const input: HTMLInputElement = e.target as HTMLInputElement;
     input.select();
@@ -18,6 +18,14 @@ export const TextField = ({value, onChange, label, id}: TextFieldProps ) => {
     !input.value && label.classList.remove('float-above');
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if(e.key === 'Enter') {
+      if (onKeyEnter) {
+        onKeyEnter();
+      }
+    }    
+  }
+
   useEffect(() => {
     const input = document.getElementById(id) as HTMLInputElement;
     const label = input.previousElementSibling as HTMLLabelElement;
@@ -30,8 +38,9 @@ export const TextField = ({value, onChange, label, id}: TextFieldProps ) => {
         id={id}
         className="input-field"
         value={value}
-        onChange={e => onChange(id, e.target.value)}
+        onChange={e => onChange(e.target.value)}
         onFocus={handleFocus}
+        onKeyDown={handleKeyDown} 
         onBlur={handleBlur}
         autoComplete="off"
       />
@@ -42,7 +51,8 @@ export const TextField = ({value, onChange, label, id}: TextFieldProps ) => {
 
 type TextFieldProps = {
   label: string,
-  onChange: (id: string, value: string) => void,
-  value: string,
+  onChange: (value: string) => void,
+  onKeyEnter?: () => void
+  value: string | undefined,
   id: string
 }

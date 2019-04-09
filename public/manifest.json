@@ -3,12 +3,33 @@
   "name": "My bookmarks",
   "author": "Juanjo MS",
   "description": "Add your favorite bookmarks with custom colors",
-  "icons": {
-    "16": "/images/icon-16.png",
-    "32": "/images/icon-16.png",
-    "48": "/images/icon-16.png",
-    "128": "/images/icon-16.png"
-  },
+  "icons": [
+    {
+      "src": "/images/icon-16.png",
+      "type": "image/png",
+      "sizes": "16x16"
+    },
+    {
+      "src": "/images/icon-32.png",      
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "/images/icon-32.png",      
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "/images/icon-48.png",      
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "/images/icon-128.png",      
+      "type": "image/png",
+      "sizes": "128x128"
+    }    
+  ],    
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#2B3137",
