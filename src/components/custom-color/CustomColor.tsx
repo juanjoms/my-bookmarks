@@ -4,7 +4,7 @@ type CustomColorProps = {
   color: string;
   onSelectColor: (value: string) => void;
 }
-const CustomColor = ({ color, onSelectColor }: CustomColorProps) => (
+export const CustomColor = ({ color, onSelectColor }: CustomColorProps) => (
   <div className="CustomColor">
     <input
       type="text"
@@ -16,7 +16,6 @@ const CustomColor = ({ color, onSelectColor }: CustomColorProps) => (
     <RGBColor color={color} onSelectColor={onSelectColor} />
   </div>
 );
-export default CustomColor;
 
 function RGBColor({ color, onSelectColor }: any) {
   let hex = color.replace("#", "");
@@ -77,7 +76,7 @@ function RBGItem({ label, value, onChange }: any) {
     return () => {
       input.removeEventListener("keydown", handleKey);
     };
-  });
+  }, []);
   return (
     <div className="rgbgroup">
       <div className="rgblabel">{label}</div>

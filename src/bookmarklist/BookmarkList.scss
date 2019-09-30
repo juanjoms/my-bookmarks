@@ -1,5 +1,21 @@
 @import '../shared/variables';
 
+.sync {
+  position: absolute;
+  right: 25px;
+  top: 50px;
+  .sync-icon {
+    height: 30px;
+    width: 30px;
+    color: $grey-color;
+  }
+  &:hover {
+    .sync-icon {
+      transition: 1s;
+      color: lighten($grey-color, 15);
+    }
+  }
+}
 .BookmarkList {
   display: grid;
   grid-template-columns: repeat(4, auto);

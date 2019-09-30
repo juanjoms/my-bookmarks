@@ -1,0 +1,22 @@
+@import './../../shared/variables';
+.EditBookmark {
+	width: 550px;
+	padding-bottom: 15px;
+	color: $light-color;
+	.row {
+		display: flex;
+		justify-content: center;
+		.col {
+			width: 240px;
+		}
+	}
+
+	@media screen and (max-width: $screen-mobile-max) {
+		.row {
+			flex-wrap: wrap;
+			.col {
+				width: 100%
+			}
+		}
+	}
+}

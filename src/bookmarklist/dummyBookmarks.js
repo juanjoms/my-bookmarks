@@ -13,7 +13,7 @@ export const dummyBookmarks = [
     value: 'Youtube',
     url: 'https://youtube.com',
     isExternal: true,
-    backColor: '#E32424'
+    backColor: '#d71e18'
   },
   {
     key: 2,

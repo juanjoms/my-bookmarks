@@ -1,0 +1,9 @@
+@import './../../shared/variables';
+
+.EmailForm {
+  padding: 10px 30px;
+  .email-form-desc {
+    color: $grey-color;
+    font-weight: $light;
+  }
+}

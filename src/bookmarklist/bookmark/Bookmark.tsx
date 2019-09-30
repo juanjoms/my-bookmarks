@@ -12,7 +12,7 @@ export const Bookmark = ({bookmark, handleAddEdit, handleRemove}: BookmarkProps)
   const [displayCTAS, setDisplayCTAS] = useState(false);
   const iconClass = isDark(bookmark.backColor) ? 'light-icon' : 'dark-icon';
   return bookmark.isEmpty?
-    <button className="Bookmark empty" onClick={() => handleAddEdit(bookmark)}>
+    <button className="Bookmark empty dark-button" onClick={() => handleAddEdit(bookmark)}>
       <IconPlus className="add-icon"></IconPlus>
     </button> :
     <div className="Bookmark filled" style={{backgroundColor: bookmark.backColor}}>

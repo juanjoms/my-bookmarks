@@ -1,0 +1,72 @@
+@import '../../shared/variables';
+
+.Modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  .modal-dialog {
+    text-align: center;
+    background: rgba($dark-color, 0.95);
+    margin-bottom: 50px;
+    z-index: 2;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid ligthen($dark-color, 1);
+  }
+  .modal-backdrop {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: $dark-color;
+    opacity: 0;
+    z-index: 1;
+
+    animation-name: opacity;
+    animation-duration: $fast;
+    animation-delay: $fast;
+    animation-fill-mode: both;
+  }
+
+  @media screen and (max-width: $screen-mobile-max) {
+    .modal-dialog {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      padding: 20px;
+      overflow: scroll;
+      border-radius: 0;
+    }
+  }
+}
+
+
+@keyframes opacity {
+  100% { opacity: 0.4 }
+}
+
+.zoomInUp {
+  animation-name: zoomInUp;
+  animation-duration: $slow;
+  animation-fill-mode: both;
+}
+
+@keyframes zoomInUp {
+  from {
+    opacity: 0;
+    transform: scale3d(.1, .1, .1) translate3d(0, 1000px, 0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(0, -60px, 0);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+  }
+}
