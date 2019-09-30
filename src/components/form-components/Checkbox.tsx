@@ -10,7 +10,7 @@ export const Checkbox = ({checked, onChange}: CheckboxProps ) => (
       </svg>
       <div className="checkbox__mixedmark"></div>
     </div>
-    Open in external tab
+    Open in new tab
   </label>
 );
 

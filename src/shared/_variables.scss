@@ -1,12 +1,11 @@
 /* Colors */
 $back-color: #2B3137;
-$dark-color: #15181a;
-$dark-color: darken($back-color, 6);
+$dark-color: darken($back-color, 7);
 $back-color-alt: #24292E;
 $title-color: #61dafb;
 $light-color: #f5f5f5;
-$light-grey-color: #e0e0e0;
-$grey-color: lighten($back-color, 30);
+$light-grey-color: #d0d0d0;
+$grey-color: lighten($back-color, 45);
 $theme-color: #ff8a00;
 $theme-color: #F47034;
 
@@ -15,7 +14,6 @@ $roboto: 'Roboto', sans-serif;
 $muli: 'Muli', $roboto;
 $thin: 100;
 $light: 300;
-$regular: 400;
 $medium: 500;
 
 

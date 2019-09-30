@@ -1,6 +1,6 @@
 @import '../../shared/variables';
 .button {
-  font-family: Roboto, sans-serif;
+  font-family: $roboto;
   font-size: .875rem;
   font-weight: $medium;
   padding: 0 8px;
@@ -12,7 +12,7 @@
   outline: none;
   vertical-align: middle;
   border-radius: 4px;
-  margin: 25px 0 0;
+  margin: 20px 0 0;
   cursor: pointer;
   text-transform: uppercase;
   box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
@@ -34,5 +34,8 @@
   &:hover {
     box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
     background-color: rgba($theme-color, 0.92);
+  }
+  &:focus {
+    border: 1px solid rgba(white, 0.6);
   }
 }

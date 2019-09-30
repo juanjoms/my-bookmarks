@@ -12,10 +12,10 @@
   .modal-dialog {
     text-align: center;
     background: rgba($dark-color, 0.95);
-    color: $light-grey-color;
-    margin-bottom: 00px;
+    margin-bottom: 50px;
     z-index: 2;
-    border-radius: 5px;    
+    border-radius: 5px;
+    padding: 10px;
     border: 1px solid ligthen($dark-color, 1);
   }
   .modal-backdrop {
@@ -23,7 +23,7 @@
     height: 100%;
     position: absolute;
     background: $dark-color;
-    opacity: 0;        
+    opacity: 0;
     z-index: 1;
 
     animation-name: opacity;

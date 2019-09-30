@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import './BookmarkList.scss';
-//import { Modal } from '../modal/Modal_';
 import { Modal } from '../components/modal/Modal';
 import { Bookmark } from './bookmark/Bookmark';
 import BookmarkModel from '../bookmark';
 import { dummyBookmarks } from './dummyBookmarks';
-import {SyncCloud, CloudDown} from '../icons/Icons';
+import { CloudDown} from '../icons/Icons';
 import { EmailForm } from './email-form/EmailForm';
 import { EditBookmark } from './edit-bookmark/EditBookmark';
-import { firebaseApp } from '../firebase/firebase';
+import { CompareBookmarks } from './compare-bookmarks/CompareBookmarks';
+import { useFirebase, queryBookmarks, saveBookmarks } from '../firebase/firebase';
 
-type ModalConfig = {
-  showModal: boolean,
-  bookmark: BookmarkModel,
-  unEditBookmark: BookmarkModel  
-}
 type BookmarkEdit = {
   showEditModal: boolean
   original: BookmarkModel,
   edited: BookmarkModel
+}
+type CompareBookmarks = {
+  showCompareModal: boolean,
+  cloudBookmarks: BookmarkModel[],
+  localBookmarks: BookmarkModel[],
 }
 type Email = string | null;
 
@@ -32,63 +32,100 @@ const initBookmarks = (): BookmarkModel[] => {
 };
 
 const BookmarkList = () => {
+  const [bookmarks, setBookmarks] = useState(initBookmarks)
   const [bookmarkEdit, setBookmarkEdit] = useState({} as BookmarkEdit)
-  //const [modalConfig, setModalConfig] = useState({showModal: false, bookmark: new BookmarkModel(0), unEditBookmark: new BookmarkModel(0)} as ModalConfig);
-  const [bookmarks, setBookmarks] = useState(initBookmarks);
-  const [email, setEmail] = useState(null as Email);
-  const [emailModal, showEmailModal] = useState(false);  
-  let unEditedBookmark: BookmarkModel;
-  
+  const [compare, setCompare] = useState({} as CompareBookmarks)
+  const [email, setEmail] = useState(null as Email)
+  const [emailModalVisible, setEmailModalVisible] = useState(false)
+
   useEffect(() => {
-    console.log('Saving bookmarks');
+    saveInBrowser(bookmarks, email);
+  }, [bookmarkEdit, emailModalVisible]);
+
+  const saveInBrowser = (bookmarks: BookmarkModel[], email?: string | null) => {
+    console.log('persisting...');
     localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
-  });
+    if (email) {
+      localStorage.setItem('email', email);
+    }
+  }
 
   const handleAddEdit = (bookmark: BookmarkModel) => {
     const original = bookmark;
     const edited = {...bookmark}
-    setBookmarkEdit({showEditModal: true, original, edited});    
-  }
-  /*
-  const closeModal = (bookmark: BookmarkModel) => {
-    setModalConfig({showModal: false, bookmark, unEditBookmark: unEditedBookmark});
-    bookmarks[bookmark.key] = bookmark;
-    setBookmarks(bookmarks);
-  }
-  */
-  const dismissModal = () => {
-    console.log(bookmarkEdit);    
+    setBookmarkEdit({showEditModal: true, original, edited});
   }
 
   const handleRemove = ( bookmarkKey: number) => {
     bookmarks[bookmarkKey].isEmpty = true;
     setBookmarks(bookmarks);
   }
+
+  const onEmailSaved = () => {
+    setEmailModalVisible(false);
+    syncData();
+  }
+
   const syncData = () => {
-    if (email === null) {
-      showEmailModal(true);      
-    } else {
-      alert(email);
-    }    
+    if (!email) {
+      const localEmail = localStorage.getItem('email');
+      setEmail(localEmail);
+      setEmailModalVisible(true);
+      return;
+    }
+    useFirebase((db) => {
+      queryBookmarks(db, email).then((doc: any)=> {
+        if (doc && doc.exists) {
+          const cloudBookmarks = JSON.parse(doc.data().bookmarks);
+          setCompare({showCompareModal: true, cloudBookmarks, localBookmarks: bookmarks})
+        }
+        else {
+          saveBookmarks(db, email, JSON.stringify(bookmarks));
+          console.log('bookmarks not previsouly saved');
+        }
+      })
+    });
+
   }
 
   const updateBookmarks = (bookmark: BookmarkModel) => {
     bookmarks[bookmark.key] = bookmark;
     setBookmarks(bookmarks);
-    console.log('bookmarks updated ', bookmarks);
   }
+
   const cancelEditBookmark = () => {
     setBookmarkEdit({...bookmarkEdit, showEditModal: false});
     bookmarks[bookmarkEdit.original.key] = bookmarkEdit.original;
     setBookmarks(bookmarks);
-    console.log(bookmarkEdit);
-    dismissModal();
   }
+
+  const cancelCompareModal = () => {
+    setCompare({...compare, showCompareModal: false})
+  }
+
+  const confirmEditBookmark = () => {
+    setBookmarkEdit({...bookmarkEdit, showEditModal: false});
+  }
+
+  const useLocalBookmarks = () => {
+    if (!email) return;
+    useFirebase((db) => {
+      saveBookmarks(db, email, JSON.stringify(bookmarks))
+      setCompare({...compare, showCompareModal: false})
+    })
+  }
+
+  const useCloudBookmarks = () => {
+    setBookmarks(compare.cloudBookmarks)
+    saveInBrowser(compare.cloudBookmarks)
+    setCompare({...compare, showCompareModal: false})
+  }
+
   return (
-    <>      
-      <button className="sync" onClick={syncData}>
+    <>
+      <button className="sync dark-button" onClick={syncData}>
         <CloudDown className="sync-icon" />
-      </button>      
+      </button>
       <div className={'BookmarkList'}>
         {
           bookmarks.map((bookmark) =>
@@ -102,15 +139,26 @@ const BookmarkList = () => {
         }
       </div>
       { bookmarkEdit.showEditModal ?
-        <Modal onDismiss={cancelEditBookmark}>
-          <EditBookmark bookmark={bookmarkEdit.edited} setBookmark={(bookmark) => updateBookmarks(bookmark)} onCancel={cancelEditBookmark}/>          
+        <Modal onClose={cancelEditBookmark}>
+          <EditBookmark
+            bookmark={bookmarkEdit.edited}
+            setBookmark={(bookmark) => updateBookmarks(bookmark)}
+            onCancel={cancelEditBookmark}
+            onSave = {confirmEditBookmark}
+          />
         </Modal>:
         null
       }
-      { emailModal ?
-        <Modal onDismiss={() => showEmailModal(false)} >
-          <EmailForm email={email || ''} onEmailChange={(email: string) => setEmail(email)} onSubmit={() => alert(email) } />
+      { emailModalVisible ?
+        <Modal onClose={() => setEmailModalVisible(false)} >
+          <EmailForm email={email || ''} onEmailChange={(email: string) => setEmail(email)} onSubmit={() => onEmailSaved() } />
         </Modal> : null
+      }
+      { compare.showCompareModal ?
+        <Modal onClose={cancelCompareModal}>
+          <CompareBookmarks cloudBookmarks={compare.cloudBookmarks} localBookmarks={compare.localBookmarks} useLocal={useLocalBookmarks} useCloud={useCloudBookmarks} />
+        </Modal> :
+        null
       }
     </>
   )

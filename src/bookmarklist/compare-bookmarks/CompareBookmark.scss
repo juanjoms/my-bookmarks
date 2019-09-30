@@ -1,0 +1,33 @@
+@import './../../shared/variables';
+
+.CompareBookmarks {
+	min-width: 450px;
+	display: flex;
+	justify-content: space-around;
+	padding-bottom: 10px;
+	.col {
+		width: 200px;
+	}
+}
+
+.CompareItem {
+	margin-bottom: 5px;
+	.compare-content {
+		min-height: 52px;
+		padding: 10px;
+		border-radius: 4px;
+		&.empty {
+			background-color: $back-color;
+			border: 1px solid darken($back-color, 5);
+		}
+		.item-value {
+			font-weight: $medium;
+			color: $light-color;
+			line-height: 1;
+		}
+		.item-url {
+			font-size: 14px;
+			color: $light-grey-color;
+		}
+	}
+}

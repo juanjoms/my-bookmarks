@@ -9,25 +9,13 @@
   overflow: hidden;
   outline: none;
   &.empty {
-    background-image: linear-gradient(135deg, lighten($back-color, 3) 0%, $back-color 100%);
-    border: 1px solid darken($back-color, 5);
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
     .add-icon {
       width: 50px;
       fill: darken($back-color, 10);
       animation: spin $normal linear;
-    }
-    &:hover {
-      background-color: $back-color;
-      background-image: none;
-      border: 1px solid darken($back-color, 7);
-    }
-    &:focus,
-    &:active {
-      border: 2px solid lighten($back-color, 10);
     }
   }
   &.filled {
