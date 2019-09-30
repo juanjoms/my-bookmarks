@@ -10,12 +10,12 @@ const firebaseConfig = {
 
 let database: any;
 
-export const useFirebase = (callback: (database: any) => void) => {
+export const firebase = (callback: (database: any) => void) => {
 
   const databaseLoaded = () => {
-    const firebase = (window as any).firebase;
-    firebase.initializeApp(firebaseConfig);
-    database = firebase.firestore();
+    const fb = (window as any).firebase;
+    fb.initializeApp(firebaseConfig);
+    database = fb.firestore();
     callback(database)
   }
 

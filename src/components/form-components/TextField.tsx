@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import './TextField.scss';
 
-export const TextField = ({value, onChange, label, id, onKeyEnter}: TextFieldProps ) => {  
+export const TextField = ({value, onChange, label, id, onKeyEnter}: TextFieldProps ) => {
   const handleFocus = (e: React.FocusEvent) => {
     const input: HTMLInputElement = e.target as HTMLInputElement;
     input.select();
@@ -23,14 +23,15 @@ export const TextField = ({value, onChange, label, id, onKeyEnter}: TextFieldPro
       if (onKeyEnter) {
         onKeyEnter();
       }
-    }    
+    }
   }
 
   useEffect(() => {
     const input = document.getElementById(id) as HTMLInputElement;
     const label = input.previousElementSibling as HTMLLabelElement;
     input.value && label.classList.add('float-above');
-  }, []);
+    debugger;
+  }, [id]);
   return (
     <div className="input-group">
       <label htmlFor={id} className="float-label">{label}</label>
@@ -40,7 +41,7 @@ export const TextField = ({value, onChange, label, id, onKeyEnter}: TextFieldPro
         value={value}
         onChange={e => onChange(e.target.value)}
         onFocus={handleFocus}
-        onKeyDown={handleKeyDown} 
+        onKeyDown={handleKeyDown}
         onBlur={handleBlur}
         autoComplete="off"
       />

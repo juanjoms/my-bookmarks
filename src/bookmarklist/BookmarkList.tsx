@@ -8,7 +8,7 @@ import { CloudDown} from '../icons/Icons';
 import { EmailForm } from './email-form/EmailForm';
 import { EditBookmark } from './edit-bookmark/EditBookmark';
 import { CompareBookmarks } from './compare-bookmarks/CompareBookmarks';
-import { useFirebase, queryBookmarks, saveBookmarks } from '../firebase/firebase';
+import { firebase, queryBookmarks, saveBookmarks } from '../firebase/firebase';
 
 type BookmarkEdit = {
   showEditModal: boolean
@@ -43,7 +43,6 @@ const BookmarkList = () => {
   }, [bookmarkEdit, emailModalVisible]);
 
   const saveInBrowser = (bookmarks: BookmarkModel[], email?: string | null) => {
-    console.log('persisting...');
     localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
     if (email) {
       localStorage.setItem('email', email);
@@ -73,7 +72,7 @@ const BookmarkList = () => {
       setEmailModalVisible(true);
       return;
     }
-    useFirebase((db) => {
+    firebase((db) => {
       queryBookmarks(db, email).then((doc: any)=> {
         if (doc && doc.exists) {
           const cloudBookmarks = JSON.parse(doc.data().bookmarks);
@@ -81,7 +80,6 @@ const BookmarkList = () => {
         }
         else {
           saveBookmarks(db, email, JSON.stringify(bookmarks));
-          console.log('bookmarks not previsouly saved');
         }
       })
     });
@@ -109,7 +107,7 @@ const BookmarkList = () => {
 
   const useLocalBookmarks = () => {
     if (!email) return;
-    useFirebase((db) => {
+    firebase((db) => {
       saveBookmarks(db, email, JSON.stringify(bookmarks))
       setCompare({...compare, showCompareModal: false})
     })
