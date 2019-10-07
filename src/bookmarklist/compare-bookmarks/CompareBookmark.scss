@@ -28,6 +28,9 @@
 		.item-url {
 			font-size: 14px;
 			color: $light-grey-color;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
 		}
 	}
 }

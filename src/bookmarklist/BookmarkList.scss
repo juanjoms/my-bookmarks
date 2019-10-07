@@ -22,8 +22,13 @@
   justify-content: center;
   margin: 0 auto;
   margin-top: 90px;
+}
 
-  @media screen and (max-width: $screen-mobile-max) {
+@media screen and (max-width: $screen-mobile-max) {
+  .sync {
+    top: 110px;
+  }
+  .BookmarkList {
     grid-template-columns: repeat(2, auto);
     margin-top: 60px;
   }
