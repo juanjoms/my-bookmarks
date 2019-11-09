@@ -30,7 +30,6 @@ export const TextField = ({value, onChange, label, id, onKeyEnter}: TextFieldPro
     const input = document.getElementById(id) as HTMLInputElement;
     const label = input.previousElementSibling as HTMLLabelElement;
     input.value && label.classList.add('float-above');
-    debugger;
   }, [id]);
   return (
     <div className="input-group">

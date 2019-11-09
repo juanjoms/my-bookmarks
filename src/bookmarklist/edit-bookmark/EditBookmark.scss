@@ -1,17 +1,17 @@
 @import './../../shared/variables';
 .EditBookmark {
-	width: 550px;
 	padding-bottom: 15px;
 	color: $light-color;
 	.row {
 		display: flex;
-		justify-content: center;
 		.col {
 			width: 240px;
+			padding: 0 10px;
 		}
 	}
 
 	@media screen and (max-width: $screen-mobile-max) {
+		width: 100%;
 		.row {
 			flex-wrap: wrap;
 			.col {

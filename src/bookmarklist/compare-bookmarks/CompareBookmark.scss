@@ -1,13 +1,19 @@
 @import './../../shared/variables';
 
 .CompareBookmarks {
-	min-width: 450px;
+	width: 450px;
 	display: flex;
 	justify-content: space-around;
 	padding-bottom: 10px;
 	.col {
 		width: 200px;
 	}
+	@media screen and (max-width: $screen-mobile-max) {
+		width: 100%;
+    .col {
+			width: 155px;
+    }
+  }
 }
 
 .CompareItem {

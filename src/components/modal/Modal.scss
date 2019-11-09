@@ -15,8 +15,7 @@
     margin-bottom: 50px;
     z-index: 2;
     border-radius: 5px;
-    padding: 10px;
-    border: 1px solid ligthen($dark-color, 1);
+    padding: 10px 15px;
   }
   .modal-backdrop {
     width: 100%;
@@ -39,7 +38,7 @@
       height: 100vh;
       top: 0;
       left: 0;
-      padding: 20px;
+      padding: 20px 15px;
       overflow: scroll;
       border-radius: 0;
     }
