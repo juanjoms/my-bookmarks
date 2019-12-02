@@ -5,6 +5,15 @@
   padding: 20px 10px;
   border-radius: 0 0 4px 4px;
   margin: 0 auto;
+  input.native-picker {
+    background: transparent;
+    border: none;
+    padding: 0;
+    width: 45px;
+    height: 28px;
+    cursor: pointer;
+    outline: none;
+  }
   input.custom {
     width: 120px;
     border: none;

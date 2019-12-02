@@ -6,13 +6,21 @@ type CustomColorProps = {
 }
 export const CustomColor = ({ color, onSelectColor }: CustomColorProps) => (
   <div className="CustomColor">
-    <input
-      type="text"
-      className="custom"
-      style={{ borderColor: color }}
-      value={color}
-      onChange={e => onSelectColor(e.target.value)}
-    />
+    <div>
+      <input type="color"
+        className="native-picker"
+        value={color}
+        onChange={e => onSelectColor(e.target.value)} />
+    </div>
+    <div>
+      <input
+        type="text"
+        className="custom"
+        style={{ borderColor: color }}
+        value={color}
+        onChange={e => onSelectColor(e.target.value)}
+      />
+    </div>
     <RGBColor color={color} onSelectColor={onSelectColor} />
   </div>
 );
