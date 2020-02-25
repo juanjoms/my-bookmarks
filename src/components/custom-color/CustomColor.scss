@@ -2,7 +2,7 @@
 .CustomColor {
   text-align: center;
   width: 200px;
-  padding: 20px 10px;
+  padding: 15px 10px 10px;
   border-radius: 0 0 4px 4px;
   margin: 0 auto;
   input.native-picker {
@@ -12,6 +12,8 @@
     width: 45px;
     height: 28px;
     cursor: pointer;
+    outline: none;
+    margin-bottom: 5px;
   }
   input.custom {
     width: 120px;
